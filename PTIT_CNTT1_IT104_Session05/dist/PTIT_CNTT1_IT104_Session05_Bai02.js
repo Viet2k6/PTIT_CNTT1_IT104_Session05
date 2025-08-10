@@ -6,10 +6,11 @@ class Student {
         this.email = email;
     }
 }
-const students = [];
-students.push(new Student(1, 18, "hello123@example.com"));
-students.push(new Student(2, 20, "iamcute456@example.com"));
-students.push(new Student(3, 19, "noahh789@example.com"));
+const students = [
+    new Student(1, 18, "hello123@example.com"),
+    new Student(2, 20, "iamcute456@example.com"),
+    new Student(3, 19, "noahh789@example.com")
+];
 for (const student of students) {
     console.log(`ID: ${student.id}, Tuổi: ${student.age}, Email: ${student.email}`);
 }
