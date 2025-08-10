@@ -1,24 +1,30 @@
 class Book2 {
-  private id: string;
+  private id: number;
   private titleValue: string;
   private authorValue: string;
-  constructor(id: string, title: string, author: string) {
+
+  constructor(id: number, title: string, author: string) {
     this.id = id;
     this.titleValue = title;
     this.authorValue = author;
   }
-  public get bookId(): string {
+
+  public get bookId(): number {
     return this.id;
   }
+
   public get title(): string {
     return this.titleValue;
   }
+
   public get author(): string {
     return this.authorValue;
   }
+
   public setTitle(newTitle: string): void {
     this.titleValue = newTitle;
   }
+
   public setAuthor(newAuthor: string): void {
     this.authorValue = newAuthor;
   }
@@ -26,6 +32,7 @@ class Book2 {
 
 class Library2 {
   private books: Book2[] = [];
+
   public addBook(book: Book2): void {
     this.books.push(book);
   }
@@ -33,11 +40,11 @@ class Library2 {
   public showBooks(): void {
     console.log("Danh sách sách trong thư viện:");
     this.books.forEach((book, index) => {
-      console.log(`${index + 1}. "${book.title}" của ${book.author}`);
+      console.log(`${index + 1}. "${book.title}" của ${book.author} [ID: ${book.bookId}]`);
     });
   }
 
-  public updateBookById(id: string, newTitle: string, newAuthor: string): void {
+  public updateBookById(id: number, newTitle: string, newAuthor: string): void {
     const book = this.books.find(b => b.bookId === id);
     if (book) {
       book.setTitle(newTitle);
@@ -49,18 +56,23 @@ class Library2 {
   }
 }
 
-const book01 = new Book2("1", "Harry Potter and the Sorcerer's Stone", "J.K. Rowling");
-const book02 = new Book2("2", "Harry Potter and the Prisoner of Azkaban", "J.K. Rowling");
-const book03 = new Book2("3", "The Fellowship of the Ring", "J.R.R. Tolkien");
-const book04 = new Book2("4", "A Game of Thrones", "George R.R. Martin");
-const book05 = new Book2("5", "A Clash of Kings", "George R.R. Martin");
+
+const book01 = new Book2(1, "Harry Potter and the Sorcerer's Stone", "J.K. Rowling");
+const book02 = new Book2(2, "Harry Potter and the Prisoner of Azkaban", "J.K. Rowling");
+const book03 = new Book2(3, "The Fellowship of the Ring", "J.R.R. Tolkien");
+const book04 = new Book2(4, "A Game of Thrones", "George R.R. Martin");
+const book05 = new Book2(5, "A Clash of Kings", "George R.R. Martin");
+
 const myLibrary2 = new Library2();
 myLibrary2.addBook(book01);
 myLibrary2.addBook(book02);
 myLibrary2.addBook(book03);
 myLibrary2.addBook(book04);
 myLibrary2.addBook(book05);
+
 myLibrary2.showBooks();
-myLibrary2.updateBookById("3", "Dế Mèn Phiêu Lưu Ký", "Tô Hoài");
+
+myLibrary2.updateBookById(3, "Dế Mèn Phiêu Lưu Ký", "Tô Hoài");
+
 console.log("\nDanh sách sau khi cập nhật:");
 myLibrary2.showBooks();
